@@ -1,0 +1,9 @@
+# thread
+
+http://www.cplusplus.com/reference/thread/thread/
+https://modoocode.com/285
+https://thispointer.com/c11-how-to-create-vector-of-thread-objects/
+https://snowdeer.github.io/c++/2017/08/18/cpp11-thread-example/
+https://jacking.tistory.com/1062
+http://www.cplusplus.com/reference/thread/this_thread/yield/
+http://www.cplusplus.com/reference/thread/this_thread/sleep_until/

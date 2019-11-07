@@ -25,8 +25,12 @@ auto main() -> int
     
     for (int thread_idx = 0; thread_idx < num_thread; ++thread_idx)
     {
-        std::thread _thread = std::thread(printThreadInfo); 
-        threads.push_back(std::move(_thread)); // must use move
+        // method 1 
+        // std::thread _thread = std::thread(printThreadInfo); 
+        // threads.push_back(std::move(_thread)); // must use move
+
+        // method 2: same as method 1 
+        threads.push_back(std::thread(printThreadInfo));
     }
 
     for (auto& _thread: threads)
@@ -40,10 +44,12 @@ auto main() -> int
 /* the result example 
 Hello World
 
-Thread ID: 119389716649728
-Thread ID: 119389699188480
-Thread ID: 119389690541824
-Thread ID: 119389682136832
-Thread ID: 119389707986688
+Thread ID: Thread ID: 129516665267968
+129516655974144
+Thread ID: 129516628899584
+Thread ID: Thread ID: 129516647577344
+129516638271232
 
+-> need mutex!!
+-> go to example2
 */
