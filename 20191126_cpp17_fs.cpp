@@ -1,4 +1,5 @@
-// This file is a "Hello, world!" in C++ language by GCC for wandbox.
+// tested on https://wandbox.org/
+
 #include <iostream>
 #include <cstdlib>
 #include <filesystem>
