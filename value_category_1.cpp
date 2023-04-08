@@ -13,15 +13,20 @@
 
   func lvalue test starts
   Inside func_lvalue()
+  Elapsed time for func_lvalue(): 1.584e-06s
 
   func rvalue test starts
   MyClass default constructor
   Inside func_rvalue()
   MyClass destructor
+  Elapsed time for func_rvalue(): 4.084e-06s
 
   func xvalue test starts
   Inside get_xvalue()
   MyClass default constructor
+  Elapsed time for get_xvalue(): 2.708e-06s
+
+  ltime : rtime cost ratio is 1 : 2.57828
 
   some destructors
   MyClass destructor
@@ -29,10 +34,11 @@
   MyClass destructor
   MyClass destructor
   MyClass destructor
-*/
+*/ 
 
 #include <iostream>
 #include <utility>
+#include <chrono>
 
 class MyClass
 {
@@ -74,13 +80,30 @@ int main()
     MyClass obj4 = std::move(obj1); // move constructor, obj1 is an xvalue
 
     std::cout << "\nfunc lvalue test starts" << std::endl;
-    func_lvalue(obj1); // obj1 is an lvalue
+    auto start = std::chrono::high_resolution_clock::now(); // 진입 전 시간 측정
+    func_lvalue(obj1);                                      // obj1 is an lvalue
+    auto end = std::chrono::high_resolution_clock::now();   // 진입 후 시간 측정
+    std::chrono::duration<double> elapsed_seconds = end - start;
+    std::cout << "Elapsed time for func_lvalue(): " << elapsed_seconds.count() << "s\n";
+    double ltime = elapsed_seconds.count();
 
     std::cout << "\nfunc rvalue test starts" << std::endl;
+    start = std::chrono::high_resolution_clock::now();
     func_rvalue(MyClass()); // temporary object is an rvalue
+    end = std::chrono::high_resolution_clock::now();
+    elapsed_seconds = end - start;
+    std::cout << "Elapsed time for func_rvalue(): " << elapsed_seconds.count() << "s\n";
+    double rtime = elapsed_seconds.count();
 
     std::cout << "\nfunc xvalue test starts" << std::endl;
+    start = std::chrono::high_resolution_clock::now();
     MyClass obj5 = get_xvalue(); // move constructor, returned object is an xvalue
+    end = std::chrono::high_resolution_clock::now();
+    elapsed_seconds = end - start;
+    std::cout << "Elapsed time for get_xvalue(): " << elapsed_seconds.count() << "s\n";
+    double xtime = elapsed_seconds.count();
+
+    std::cout << "\nltime : rtime cost ratio is " << 1 << " : " << rtime / ltime << "\n";
 
     std::cout << "\nsome destructors" << std::endl;
     return 0;
