@@ -73,11 +73,9 @@ public:
 
 class Triangle {
 public:
-
     void draw() const {
         std::cout << "Drawing a triangle." << std::endl;
     }
-
 };
 
 int main() {
