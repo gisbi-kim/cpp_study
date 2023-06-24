@@ -84,14 +84,12 @@ using Matrix = std::vector<std::vector<MatrixElmType>>;
 inline void print_cpu_spec() {
     std::ifstream cpuInfoFile("/proc/cpuinfo");
     std::string line;
-
     while (std::getline(cpuInfoFile, line)) {
         if (line.substr(0, 10) == "model name") {
             std::cout << "CPU Model: " << line.substr(13) << std::endl;
             break;
         }
     }
-
     cpuInfoFile.close();
 }
 
@@ -119,7 +117,6 @@ Matrix generate_random_matrix(const int SIZE) {
             elem = distribution(generator);
         }
     }
-
     return matrix;
 }
 
@@ -135,7 +132,7 @@ Result experiment_factory(const Matrix& matrix, F&& for_loop_main) {
 int main() {
     print_cpu_spec();
     
-    const int SIZE = 500;  // Large enough size to exceed cache size
+    const int SIZE = 5000;  // Large enough size to exceed cache size
     auto matrix = generate_random_matrix(SIZE);
 
     auto colmajor_result = experiment_factory(matrix, [](const Matrix& _mat){
@@ -167,7 +164,7 @@ int main() {
 
     std::cout << "experimented SIZE is " << SIZE << std::endl;
 
-	std::cout.precision(10);
+    std::cout.precision(10);
     std::cout << "Row-major access            took " << rowmajor_result.timecost_sec << " seconds, and the reusult is " << rowmajor_result.sum << std::endl;
     std::cout << "Row-major (functional impl) took " << rowmajor_functional_result.timecost_sec << " seconds, and the reusult is " << rowmajor_functional_result.sum << std::endl;
     std::cout << "Column-major access         took " << colmajor_result.timecost_sec << " seconds, and the reusult is " << colmajor_result.sum << std::endl;
