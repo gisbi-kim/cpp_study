@@ -1,4 +1,5 @@
 /* Results 
+
 ############################################
 ## test env: https://www.onlinegdb.com/online_c++_compiler
   CPU Model: Intel(R) Xeon(R) CPU @ 2.00GHz to 2.80GHz
@@ -63,6 +64,7 @@
     Row-major (functional impl) took 0.125082625 seconds, and the reusult is 50001735.42
     Column-major access         took 1.418928086 seconds, and the reusult is 50001735.42
     Column-major access was 7.124179236 times slower than row-major access.
+
   n=15000:
     Row-major access            took 0.440319285 seconds, and the reusult is 112498534.6
     Row-major (functional impl) took 0.281632676 seconds, and the reusult is 112498534.6
