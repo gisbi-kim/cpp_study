@@ -38,6 +38,18 @@
     Column-major access         took 8.229706094 seconds, and the reusult is 112498804.6
     Column-major access was 6.259431105 times slower than row-major access.
 
+  n=20000:
+    Row-major access            took 1.410480685 seconds, and the reusult is 199992961.6
+    Row-major (functional impl) took 2.351172345 seconds, and the reusult is 199992961.6
+    Column-major access         took 9.999237761 seconds, and the reusult is 199992961.6
+    Column-major access was 7.089241184 times slower than row-major access.
+
+  n=25000:
+    Row-major access            took 2.178787612 seconds, and the reusult is 312496905
+    Row-major (functional impl) took 3.77014804 seconds, and the reusult is 312496905
+    Column-major access         took 15.89033714 seconds, and the reusult is 312496905
+    Column-major access was 7.293201528 times slower than row-major access.
+
 ############################################
 ## 2, with compiler optimization flag -O3
 ############################################
@@ -70,6 +82,18 @@
     Row-major (functional impl) took 0.281632676 seconds, and the reusult is 112498534.6
     Column-major access         took 4.114672291 seconds, and the reusult is 112498534.6
     Column-major access was 9.34474694 times slower than row-major access.
+
+  n=20000:
+    Row-major access            took 0.785284614 seconds, and the reusult is 199999111.2
+    Row-major (functional impl) took 0.507571027 seconds, and the reusult is 199999111.2
+    Column-major access         took 6.935805181 seconds, and the reusult is 199999111.2
+    Column-major access was 8.832218354 times slower than row-major access.
+
+  n=25000:
+    Row-major access            took 1.224648767 seconds, and the reusult is 312496215.2
+    Row-major (functional impl) took 0.792926586 seconds, and the reusult is 312496215.2
+    Column-major access         took 11.78799699 seconds, and the reusult is 312496215.2
+    Column-major access was 9.625614547 times slower than row-major access.
 
 */
 
