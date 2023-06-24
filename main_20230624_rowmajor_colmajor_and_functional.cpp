@@ -177,3 +177,39 @@ int main() {
 
     return 0;
 }
+
+/* to visualize the above result, using this Python code 
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 데이터 생성
+data = {
+    "Size": [500, 1000, 5000, 10000, 15000, 500, 1000, 5000, 10000, 15000, 500, 1000, 5000, 10000, 15000],
+    "Type": ['Row', 'Row', 'Row', 'Row', 'Row', 'Column', 'Column', 'Column', 'Column', 'Column', 'RowFunc', 'RowFunc', 'RowFunc', 'RowFunc', 'RowFunc'],
+    "Time_No_Optimization": [0.000843867, 0.00335054, 0.085016627, 0.324418896, 1.314769019, 0.001298086, 0.005239655, 0.300620669, 1.777532428, 8.229706094, 0.001379423, 0.005397353, 0.137052101, 0.525901008, 2.810473077],
+    "Time_O3_Optimization": [0.000296172, 0.002056682, 0.061631129, 0.199170745, 0.440319285, 0.000321579, 0.002813145, 0.489687813, 1.418928086, 4.114672291, 0.000262256, 0.001160709, 0.038777388, 0.125082625, 0.281632676]
+}
+
+# 데이터프레임 생성
+df = pd.DataFrame(data)
+
+# 그래프 그리기
+fig, ax = plt.subplots()
+
+markers = {'Row': 'o', 'Column': '^', 'RowFunc': '*'}
+colors = {'Row': 'b', 'Column': 'r', 'RowFunc': 'g'}
+
+for label, group in df.groupby('Type'):
+    group.plot('Size', 'Time_No_Optimization', ax=ax, label=f'{label}_No_Optimization', 
+               marker=markers[label], color=colors[label], linestyle='-')
+    group.plot('Size', 'Time_O3_Optimization', ax=ax, label=f'{label}_O3_Optimization', 
+               marker=markers[label], color=colors[label], linestyle='--')
+
+plt.ylabel('Time (seconds)')
+plt.xlabel('Matrix Size')
+plt.title('Comparison of Row-major and Column-major access')
+plt.grid(True)
+plt.show()
+
+*/
